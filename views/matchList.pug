@@ -1,0 +1,28 @@
+extends layout
+
+block navbar 
+    include navbar
+
+block content
+    .container
+        .row 
+            .col-12
+                h1 List of Matches
+        
+        .row
+            .col-12
+                table.table.table-striped.table-responsive-md
+                    thead.thead-dark
+                        tr 
+                            th Team A 
+                            th Team B 
+                            th Date
+                            th City
+
+                    tbody
+                        each match in matchesList
+                            tr 
+                                td=match.teamA
+                                td=match.teamB
+                                td=match.date
+                                td=match.city

@@ -1,0 +1,62 @@
+extends layout
+
+block navbar 
+    include navbar
+
+block content 
+    if error
+        .alert.alert-danger(role="alert")
+            span=error
+            
+    .container
+        .row.d-flex.align-items-center.justify-content-center.text-center.height-100
+            .col-12
+                h1.display-3 Add New Match
+
+                form(action="/matches/add", method="post") 
+                    .form-group.d-flex.align-items-center.justify-content-center.text-center
+                        select.form-select.select-styling.text-center(aria-label="Default select example", name="teamA")
+                            option(selected disabled) Team A
+                            option(value="Karachi Kings") Karachi Kings
+                            option(value="Multan Sultans") Multan Sultans
+                            option(value="Peshawar Zalmi") Peshawar Zalmi
+                            option(value="Lahore Qalanders") Lahore Qalanders
+                            option(value=" Islamabad United")  Islamabad United
+                            option(value="Quetta Gladiators") Quetta Gladiators
+
+                    .form-group.d-flex.align-items-center.justify-content-center.text-center
+                        select.form-select.select-styling.text-center(aria-label="Default select example", name="teamB")
+                            option(selected disabled) Team B
+                            option(value="Karachi Kings") Karachi Kings
+                            option(value="Multan Sultans") Multan Sultans
+                            option(value="Peshawar Zalmi") Peshawar Zalmi
+                            option(value="Lahore Qalanders") Lahore Qalanders
+                            option(value=" Islamabad United")  Islamabad United
+                            option(value="Quetta Gladiators") Quetta Gladiators
+
+                    .form-group.d-flex.align-items-center.justify-content-center.text-center
+                        input.w-50(type="text", class="form-control", name="city" placeholder="Enter Match City")
+
+                    .form-group.d-flex.align-items-center.justify-content-center.text-center
+                        select.form-select.select-styling.text-center(aria-label="Default select example", name="day")
+                            option(selected disabled) Select day
+                            - var i = 1;
+                            while i < 31
+                                option(value=i)= i++
+
+
+                    .form-group.d-flex.align-items-center.justify-content-center.text-center
+                        select.form-select.select-styling.text-center(aria-label="Default select example", name="month")
+                            option(selected disabled) Select Month
+                            each month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+                                option(value=month)= month
+
+
+                    .form-group.d-flex.align-items-center.justify-content-center.text-center
+                        select.form-select.select-styling.text-center(aria-label="Default select example", name="year")
+                            option(selected disabled) Select Year
+                            - var i = 2000;
+                            while i < 2022
+                                option(value=i)= i++
+
+                    button.btn-hero(type="submit") Add Match
